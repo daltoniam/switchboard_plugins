@@ -2,5 +2,19 @@
   "schema_version": 1,
   "name": "daltoniam-plugins",
   "description": "Third-party Switchboard WASM plugins by @daltoniam",
-  "plugins": []
+  "plugins": [
+    {
+      "name": "figma_bridge",
+      "description": "Figma Desktop Bridge — access the Figma Plugin API for write operations (create frames, components, auto layout, etc.) via a companion plugin running in Figma Desktop.",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "sha256": "d9ef1dc78172583a8e254dbb984c099320e87c3ae2c789df89846d21358d0c4d",
+          "size": 172703,
+          "released_at": "2025-05-15T00:00:00Z",
+          "url": "https://raw.githubusercontent.com/daltoniam/switchboard_plugins/main/dist/figma_bridge.wasm"
+        }
+      ]
+    }
+  ]
 }
