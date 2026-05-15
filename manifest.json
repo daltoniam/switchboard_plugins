@@ -2,5 +2,25 @@
   "schema_version": 1,
   "name": "daltoniam-plugins",
   "description": "Third-party Switchboard WASM plugins by @daltoniam",
-  "plugins": []
+  "plugins": [
+    {
+      "name": "looker",
+      "description": "Looker BI integration — dashboards, Looks, LookML models, inline analytics queries, SQL Runner.",
+      "author": "daltoniam",
+      "homepage": "https://github.com/daltoniam/switchboard_plugins",
+      "license": "MIT",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "abi_min": 1,
+          "abi_max": 1,
+          "url": "https://raw.githubusercontent.com/daltoniam/switchboard_plugins/main/dist/looker.wasm",
+          "sha256": "32ca911794ce5df434193ec34328ff4185e55b2129c40e68ea4f196e7af6b40f",
+          "size": 221638,
+          "released_at": "2026-05-15T19:27:11Z",
+          "changelog": "Initial release. 23 tools across search, folders, Looks, dashboards, queries, SQL Runner, models, connections, users, and scheduled plans."
+        }
+      ]
+    }
+  ]
 }

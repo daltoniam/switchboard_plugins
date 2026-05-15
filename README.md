@@ -8,7 +8,7 @@ A home for integrations that make more sense as standalone WASM modules than as 
 
 | Plugin | Tools | Description |
 |--------|-------|-------------|
-| _none yet_ |  |  |
+| [looker](plugins/looker/) | 23 | Looker BI: dashboards, Looks, LookML models, inline analytics queries, SQL Runner |
 
 Prebuilt binaries live in [`dist/`](dist/) and are referenced by [`manifest.json`](manifest.json).
 
