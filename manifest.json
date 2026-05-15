@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "name": "daltoniam-plugins",
+  "description": "Third-party Switchboard WASM plugins by @daltoniam",
+  "plugins": []
+}
