@@ -8,7 +8,7 @@ A home for integrations that make more sense as standalone WASM modules than as 
 
 | Plugin | Tools | Description |
 |--------|-------|-------------|
-| _none yet_ |  |  |
+| `figma_bridge` | 15 | Figma Desktop Bridge — write to canvas via the Plugin API (create frames, components, auto layout, execute arbitrary plugin code) |
 
 Prebuilt binaries live in [`dist/`](dist/) and are referenced by [`manifest.json`](manifest.json).
 
