@@ -4,6 +4,25 @@
   "description": "Third-party Switchboard WASM plugins by @daltoniam",
   "plugins": [
     {
+      "name": "bland",
+      "description": "Bland.ai voice AI integration — calls, transcripts, voices, pathways, inbound numbers, knowledge bases, org management, billing, audit logs.",
+      "author": "daltoniam",
+      "homepage": "https://github.com/daltoniam/switchboard_plugins",
+      "license": "MIT",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "abi_min": 1,
+          "abi_max": 1,
+          "url": "https://raw.githubusercontent.com/daltoniam/switchboard_plugins/main/dist/bland.wasm",
+          "sha256": "29927a10b27fdd9d44de2834771719743487d5028e3010b4e53ad5b266f7a3c1",
+          "size": 223601,
+          "released_at": "2026-05-18T17:08:37Z",
+          "changelog": "Initial release. 30 tools across calls, transcripts, voices, pathways, inbound numbers, knowledge bases, org management, billing, service versions, and audit logs."
+        }
+      ]
+    },
+    {
       "name": "looker",
       "description": "Looker BI integration — dashboards, Looks, LookML models, inline analytics queries, SQL Runner.",
       "author": "daltoniam",
