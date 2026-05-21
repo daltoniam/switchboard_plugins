@@ -9,6 +9,7 @@ A home for integrations that make more sense as standalone WASM modules than as 
 | Plugin | Tools | Description |
 |--------|-------|-------------|
 | [bland](plugins/bland/) | 30 | Bland.ai voice AI: calls, transcripts, voices, pathways, inbound numbers, knowledge bases, org management, billing, audit logs |
+| [clerk](plugins/clerk/) | 34 | Clerk authentication and identity: users, sessions, organizations, memberships, invitations, allow/block list identifiers |
 | [looker](plugins/looker/) | 23 | Looker BI: dashboards, Looks, LookML models, inline analytics queries, SQL Runner |
 
 Prebuilt binaries live in [`dist/`](dist/) and are referenced by [`manifest.json`](manifest.json).
