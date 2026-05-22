@@ -23,6 +23,25 @@
       ]
     },
     {
+      "name": "clerk",
+      "description": "Clerk authentication and identity management — users, sessions, organizations, memberships, invitations, and allow/block list identifiers via the Clerk Backend API.",
+      "author": "daltoniam",
+      "homepage": "https://github.com/daltoniam/switchboard_plugins",
+      "license": "MIT",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "abi_min": 1,
+          "abi_max": 1,
+          "url": "https://raw.githubusercontent.com/daltoniam/switchboard_plugins/main/dist/clerk.wasm",
+          "sha256": "6e588545f08256ccddfe45df86d22ff656ab549f2d24e201f73c3d11d94540d8",
+          "size": 211073,
+          "released_at": "2026-05-21T23:42:41Z",
+          "changelog": "Initial release. 34 tools across users, sessions, organizations, memberships, invitations, and allow/block list identifiers."
+        }
+      ]
+    },
+    {
       "name": "looker",
       "description": "Looker BI integration — dashboards, Looks, LookML models, inline analytics queries, SQL Runner.",
       "author": "daltoniam",
