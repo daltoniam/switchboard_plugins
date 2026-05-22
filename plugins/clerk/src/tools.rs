@@ -150,10 +150,10 @@ pub fn tool_definitions() -> Vec<ToolDefinition> {
         // ── Sessions ─────────────────────────────────────────────────────────
         tool!(
             "clerk_list_sessions",
-            "List Clerk authentication sessions (active sign-ins). Start here for session debugging, auditing who is signed in, revoking suspicious logins, and seeing which clients/devices a user is using.",
+            "List Clerk authentication sessions (active sign-ins) for a user or client. Start here for session debugging, auditing who is signed in, revoking suspicious logins, and seeing which clients/devices a user is using. Requires user_id or client_id.",
             params!(
-                "client_id" => "Filter sessions for a specific client/device",
-                "user_id" => "Filter sessions for a specific Clerk user",
+                "user_id" => "Filter sessions for a specific Clerk user (required if client_id not set)",
+                "client_id" => "Filter sessions for a specific client/device (required if user_id not set)",
                 "status" => "Filter by session status: abandoned, active, ended, expired, removed, replaced, revoked"
             )
         ),

@@ -380,6 +380,13 @@ pub fn list_sessions(args: HashMap<String, serde_json::Value>) -> sdk::ToolResul
     add_str_param(&args, &mut params, "user_id", "user_id");
     add_str_param(&args, &mut params, "status", "status");
 
+    let has_filter = params
+        .iter()
+        .any(|(k, _)| k == "client_id" || k == "user_id");
+    if !has_filter {
+        return sdk::err_result("user_id or client_id is required");
+    }
+
     let v = call!(clerk_get(&append_query("/sessions", &params)));
     json_result(&v)
 }
