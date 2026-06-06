@@ -1,0 +1,43 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "models": {
+    "large": {
+      "model": "grok-4.3",
+      "provider": "xAI",
+      "max_tokens": 16384
+    },
+    "small": {
+      "model": "grok-3-mini",
+      "provider": "xAI",
+      "max_tokens": 8192
+    }
+  },
+  "providers": {
+    "xAI": {
+      "type": "openai-compat",
+      "base_url": "https://gateway.ai.cloudflare.com/v1/a9d106d880527eaecdaf7835b792849d/curri-gateway/grok",
+      "api_key": "${CF_AIG_TOKEN:?set CF_AIG_TOKEN to your Cloudflare AI Gateway token}",
+      "extra_headers": {
+        "cf-aig-metadata": "{\"developer_id\": \"dalton.cherry\", \"task_type\": \"ci_pr_review\", \"tool\": \"crush\", \"repo\": \"daltoniam/switchboard_plugins\"}",
+        "cf-aig-collect-log-payload": "false"
+      },
+      "models": [
+        {
+          "id": "grok-4.3",
+          "name": "Grok 4.3",
+          "context_window": 1000000,
+          "default_max_tokens": 16384,
+          "can_reason": true,
+          "supports_attachments": true
+        },
+        {
+          "id": "grok-3-mini",
+          "name": "Grok 3 Mini",
+          "context_window": 131000,
+          "default_max_tokens": 8192,
+          "can_reason": true
+        }
+      ]
+    }
+  }
+}
