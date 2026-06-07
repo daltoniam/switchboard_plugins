@@ -1,0 +1,44 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "models": {
+    "large": {
+      "model": "grok-4.3",
+      "provider": "xAI",
+      "max_tokens": 16384
+    },
+    "small": {
+      "model": "grok-build-0.1",
+      "provider": "xAI",
+      "max_tokens": 16384
+    }
+  },
+  "providers": {
+    "xAI": {
+      "type": "openai-compat",
+      "base_url": "https://gateway.ai.cloudflare.com/v1/${CF_AIG_ACCOUNT_ID:?set CF_AIG_ACCOUNT_ID}/${CF_AIG_GATEWAY_ID:?set CF_AIG_GATEWAY_ID}/grok",
+      "api_key": "${CF_AIG_TOKEN:?set CF_AIG_TOKEN to your Cloudflare AI Gateway token}",
+      "extra_headers": {
+        "cf-aig-metadata": "{\"developer_id\": \"austin.cherry\", \"task_type\": \"ci_pr_review\", \"tool\": \"crush\", \"repo\": \"daltoniam/switchboard_plugins\"}",
+        "cf-aig-collect-log-payload": "false"
+      },
+      "models": [
+        {
+          "id": "grok-4.3",
+          "name": "Grok 4.3",
+          "context_window": 1000000,
+          "default_max_tokens": 16384,
+          "can_reason": true,
+          "supports_attachments": true
+        },
+        {
+          "id": "grok-build-0.1",
+          "name": "Grok Build 0.1",
+          "context_window": 256000,
+          "default_max_tokens": 16384,
+          "can_reason": true,
+          "supports_attachments": true
+        }
+      ]
+    }
+  }
+}

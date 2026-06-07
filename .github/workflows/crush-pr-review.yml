@@ -1,0 +1,47 @@
+name: Crush PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  crush-review:
+    name: Crush PR Review
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Rust
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup target add wasm32-wasip1
+
+      - name: Install Crush CLI
+        run: |
+          sudo mkdir -p /etc/apt/keyrings
+          curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+          echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+          sudo apt update && sudo apt install -y crush
+
+      - name: Run Crush PR Review
+        env:
+          CF_AIG_TOKEN: ${{ secrets.CF_AIG_TOKEN }}
+          CF_AIG_ACCOUNT_ID: ${{ secrets.CF_AIG_ACCOUNT_ID }}
+          CF_AIG_GATEWAY_ID: ${{ secrets.CF_AIG_GATEWAY_ID }}
+          GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          CRUSH_SKILLS_DIR: ${{ github.workspace }}/.agents/skills
+          CRUSH_GLOBAL_CONFIG: ${{ github.workspace }}/.ci/crush
+        run: >
+          crush run -c "${{ github.workspace }}"
+          "Review PR #${{ github.event.pull_request.number }} in ${{ github.repository }}.
+          Use the pr-review skill to do a full code review, then use the pr-comments skill to post your findings as inline comments on the PR.
+          The repo is already checked out locally. Use gh CLI for all GitHub API interactions."
