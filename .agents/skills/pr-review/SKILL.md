@@ -49,29 +49,24 @@ git fetch origin <headRefName> && git checkout <headRefName>
 
 Note the PR size (files changed, additions, deletions) — large PRs deserve extra scrutiny.
 
-### Step 2: Build Verification
+### Step 2: CI Status Verification
 
-Read `AGENTS.md` first, then verify the changed code builds:
+CI has already run before this review workflow starts. Do not rerun `cargo build`, `cargo fmt`, `cargo clippy`, `cargo test`, or the full CI matrix during automated review.
 
-```bash
-cargo build --release --target wasm32-wasip1
-```
-
-If the build fails, report it as a **Must Fix** item unless it is clearly unrelated to the PR and already known. Include the failing crate and linker/compiler error.
-
-### Step 3: Test and Format Verification
-
-Run the configured checks:
+Use GitHub status and run metadata to verify CI instead:
 
 ```bash
-cargo fmt --check
-cargo clippy --target wasm32-wasip1 -- -D warnings
+gh pr view <number> --repo daltoniam/switchboard_plugins --json statusCheckRollup
 ```
 
-If the repo contains tests for touched crates, run the relevant `cargo test` commands too. If tests are not available because the plugin only targets WASM, state that and rely on build/clippy plus code review.
+Report the existing CI result in the review. If CI failed or is missing, report that as a **Must Fix** item. If CI passed, proceed directly to diff review.
 
-- If checks fail due to code issues, report each failure with the file and error output.
+### Step 3: Test and Validation Coverage Review
+
+Review whether the diff includes appropriate tests or validation for the changed behavior. Do not run cargo checks unless needed to validate a specific finding that cannot be assessed from the diff and existing CI status.
+
 - If there are no tests or validation for new behavior, flag it when the behavior is non-trivial.
+- If a targeted command is truly necessary, keep it narrow and avoid broad workspace builds.
 
 ### Step 4: Manifest and Artifact Verification
 
